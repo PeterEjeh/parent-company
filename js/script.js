@@ -6,6 +6,9 @@
 document.addEventListener("DOMContentLoaded", function () {
   initializeApp();
   initHamburgerMenu();
+  initContactForm();
+  initSearch();
+  initEnhancedNavigation();
 });
 
 // =============================================
@@ -240,6 +243,282 @@ window.addEventListener("error", (e) => {
   console.error("Application error:", e.error);
   // You can add custom error handling here
 });
+
+// =============================================
+// CONTACT FORM HANDLING
+// =============================================
+function initContactForm() {
+  const contactForm = document.getElementById('contactForm');
+  if (contactForm) {
+    contactForm.addEventListener('submit', handleContactForm);
+  }
+}
+
+function handleContactForm(e) {
+  e.preventDefault();
+  
+  const formData = new FormData(e.target);
+  const data = Object.fromEntries(formData);
+  
+  // Basic validation
+  if (!data.name || !data.email || !data.subject || !data.message) {
+    showNotification('Please fill in all required fields.', 'error');
+    return;
+  }
+  
+  // Simulate form submission
+  showNotification('Thank you for your message! We\'ll get back to you soon.', 'success');
+  e.target.reset();
+}
+
+// =============================================
+// NOTIFICATION SYSTEM
+// =============================================
+function showNotification(message, type = 'info') {
+  // Remove existing notifications
+  const existing = document.querySelector('.notification');
+  if (existing) {
+    existing.remove();
+  }
+  
+  const notification = document.createElement('div');
+  notification.className = `notification notification-${type}`;
+  notification.innerHTML = `
+    <div class="notification-content">
+      <i class="fas fa-${type === 'success' ? 'check-circle' : type === 'error' ? 'exclamation-circle' : 'info-circle'}"></i>
+      <span>${message}</span>
+      <button class="notification-close" onclick="this.parentElement.parentElement.remove()">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+  `;
+  
+  // Add styles
+  notification.style.cssText = `
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: ${type === 'success' ? '#00b894' : type === 'error' ? '#e74c3c' : '#3498db'};
+    color: white;
+    padding: 15px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    z-index: 10000;
+    max-width: 400px;
+    animation: slideInRight 0.3s ease;
+  `;
+  
+  document.body.appendChild(notification);
+  
+  // Auto remove after 5 seconds
+  setTimeout(() => {
+    if (notification.parentElement) {
+      notification.remove();
+    }
+  }, 5000);
+}
+
+// =============================================
+// LEGAL PAGE HANDLER
+// =============================================
+function openLegalPage(page) {
+  window.open(`legal.html?page=${page}`, '_blank');
+}
+
+// =============================================
+// SEARCH FUNCTIONALITY
+// =============================================
+function initSearch() {
+  // Create search overlay
+  const searchOverlay = document.createElement('div');
+  searchOverlay.className = 'search-overlay';
+  searchOverlay.innerHTML = `
+    <div class="search-container">
+      <div class="search-header">
+        <input type="text" id="searchInput" placeholder="Search our website..." autocomplete="off">
+        <button class="search-close" onclick="closeSearch()">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="search-results" id="searchResults">
+        <div class="search-placeholder">
+          <i class="fas fa-search"></i>
+          <p>Start typing to search...</p>
+        </div>
+      </div>
+    </div>
+  `;
+  
+  // Add styles
+  searchOverlay.style.cssText = `
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.9);
+    z-index: 10000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+  `;
+  
+  document.body.appendChild(searchOverlay);
+  
+  // Search functionality
+  const searchInput = document.getElementById('searchInput');
+  const searchResults = document.getElementById('searchResults');
+  
+  searchInput.addEventListener('input', (e) => {
+    const query = e.target.value.toLowerCase();
+    if (query.length < 2) {
+      searchResults.innerHTML = `
+        <div class="search-placeholder">
+          <i class="fas fa-search"></i>
+          <p>Start typing to search...</p>
+        </div>
+      `;
+      return;
+    }
+    
+    const results = performSearch(query);
+    displaySearchResults(results, searchResults);
+  });
+  
+  // Close on escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      closeSearch();
+    }
+  });
+}
+
+function performSearch(query) {
+  const searchableContent = [
+    { title: 'About Us', content: 'Learn about Petes Technologies, our mission, and our team', url: '#about' },
+    { title: 'Services', content: 'Mobile app development, cloud infrastructure, AI & ML solutions', url: '#services' },
+    { title: 'Products', content: 'Beta Life financial app and AgroBloc blockchain platform', url: '#products' },
+    { title: 'Careers', content: 'Join our team and build the future of African technology', url: '#careers' },
+    { title: 'Contact', content: 'Get in touch with our team for partnerships and support', url: '#contact' },
+    { title: 'Investor Relations', content: 'Financial reports, presentations, and corporate governance', url: '#investors' }
+  ];
+  
+  return searchableContent.filter(item => 
+    item.title.toLowerCase().includes(query) || 
+    item.content.toLowerCase().includes(query)
+  );
+}
+
+function displaySearchResults(results, container) {
+  if (results.length === 0) {
+    container.innerHTML = `
+      <div class="search-placeholder">
+        <i class="fas fa-search"></i>
+        <p>No results found</p>
+      </div>
+    `;
+    return;
+  }
+  
+  container.innerHTML = results.map(result => `
+    <div class="search-result" onclick="navigateToSection('${result.url}'); closeSearch();">
+      <h4>${result.title}</h4>
+      <p>${result.content}</p>
+    </div>
+  `).join('');
+}
+
+function openSearch() {
+  const overlay = document.querySelector('.search-overlay');
+  overlay.style.display = 'flex';
+  document.getElementById('searchInput').focus();
+}
+
+function closeSearch() {
+  const overlay = document.querySelector('.search-overlay');
+  overlay.style.display = 'none';
+  document.getElementById('searchInput').value = '';
+}
+
+function navigateToSection(url) {
+  const element = document.querySelector(url);
+  if (element) {
+    element.scrollIntoView({ behavior: 'smooth' });
+  }
+}
+
+// =============================================
+// ENHANCED NAVIGATION
+// =============================================
+function initEnhancedNavigation() {
+  // Add search button to header
+  const header = document.querySelector('.header');
+  const searchButton = document.createElement('button');
+  searchButton.className = 'search-button';
+  searchButton.innerHTML = '<i class="fas fa-search"></i>';
+  searchButton.onclick = openSearch;
+  searchButton.style.cssText = `
+    background: rgba(0, 184, 148, 0.1);
+    border: 1px solid rgba(0, 184, 148, 0.2);
+    color: var(--color-white);
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: var(--transition-base);
+    margin-left: 10px;
+  `;
+  
+  const navbar = document.querySelector('.navbar');
+  navbar.insertBefore(searchButton, navbar.querySelector('.hamburger'));
+  
+  // Add breadcrumb navigation
+  addBreadcrumbs();
+}
+
+function addBreadcrumbs() {
+  const sections = document.querySelectorAll('.slide');
+  const breadcrumbContainer = document.createElement('div');
+  breadcrumbContainer.className = 'breadcrumbs';
+  breadcrumbContainer.style.cssText = `
+    position: fixed;
+    top: 70px;
+    left: 20px;
+    z-index: 99;
+    background: rgba(26, 26, 26, 0.9);
+    backdrop-filter: blur(10px);
+    padding: 10px 15px;
+    border-radius: 8px;
+    display: none;
+  `;
+  
+  document.body.appendChild(breadcrumbContainer);
+  
+  // Update breadcrumbs on scroll
+  window.addEventListener('scroll', updateBreadcrumbs);
+}
+
+function updateBreadcrumbs() {
+  const sections = document.querySelectorAll('.slide');
+  const breadcrumbs = document.querySelector('.breadcrumbs');
+  
+  let currentSection = null;
+  sections.forEach(section => {
+    const rect = section.getBoundingClientRect();
+    if (rect.top <= 100 && rect.bottom >= 100) {
+      currentSection = section;
+    }
+  });
+  
+  if (currentSection) {
+    const sectionTitle = currentSection.querySelector('h2')?.textContent || 'Home';
+    breadcrumbs.innerHTML = `
+      <a href="#home">Home</a> > <span>${sectionTitle}</span>
+    `;
+    breadcrumbs.style.display = 'block';
+  } else {
+    breadcrumbs.style.display = 'none';
+  }
+}
 
 // =============================================
 // CONSOLE WELCOME MESSAGE
