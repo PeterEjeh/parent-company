@@ -6,6 +6,11 @@
 document.addEventListener("DOMContentLoaded", function () {
   initializeApp();
   initHamburgerMenu();
+  initContactForm();
+  initNewsletterForm();
+  initCookieConsent();
+  initBackToTop();
+  initDropdownMenus();
 });
 
 // =============================================
@@ -200,6 +205,128 @@ if (document.querySelectorAll("img[data-src]").length > 0) {
 }
 
 // =============================================
+// PERFORMANCE OPTIMIZATIONS
+// =============================================
+
+// Preload critical resources
+function preloadCriticalResources() {
+  const criticalResources = [
+    'css/styles.css',
+    'assets/images/beta_life.png',
+    'assets/images/founder.png'
+  ];
+  
+  criticalResources.forEach(resource => {
+    const link = document.createElement('link');
+    link.rel = 'preload';
+    link.as = resource.endsWith('.css') ? 'style' : 'image';
+    link.href = resource;
+    document.head.appendChild(link);
+  });
+}
+
+// Defer non-critical JavaScript
+function deferNonCriticalJS() {
+  // Defer analytics and tracking scripts
+  setTimeout(() => {
+    // Google Analytics (example)
+    if (typeof gtag === 'undefined') {
+      const script = document.createElement('script');
+      script.async = true;
+      script.src = 'https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID';
+      document.head.appendChild(script);
+    }
+  }, 3000);
+}
+
+// Optimize images with intersection observer
+function optimizeImages() {
+  const images = document.querySelectorAll('img');
+  
+  const imageObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const img = entry.target;
+        
+        // Add fade-in animation
+        img.style.opacity = '0';
+        img.style.transition = 'opacity 0.3s ease';
+        
+        img.onload = () => {
+          img.style.opacity = '1';
+        };
+        
+        imageObserver.unobserve(img);
+      }
+    });
+  }, {
+    rootMargin: '50px'
+  });
+  
+  images.forEach(img => imageObserver.observe(img));
+}
+
+// Debounce scroll events for performance
+function debounce(func, wait) {
+  let timeout;
+  return function executedFunction(...args) {
+    const later = () => {
+      clearTimeout(timeout);
+      func(...args);
+    };
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+  };
+}
+
+// Optimize scroll events
+const optimizedScrollHandler = debounce(() => {
+  // Back to top button visibility
+  const backToTopButton = document.getElementById('backToTop');
+  if (backToTopButton) {
+    if (window.pageYOffset > 300) {
+      backToTopButton.classList.add('show');
+    } else {
+      backToTopButton.classList.remove('show');
+    }
+  }
+  
+  // Navbar background on scroll
+  const header = document.querySelector('.header');
+  if (header) {
+    if (window.pageYOffset > 50) {
+      header.style.background = 'rgba(26, 26, 26, 0.98)';
+    } else {
+      header.style.background = 'rgba(26, 26, 26, 0.95)';
+    }
+  }
+}, 10);
+
+// Replace existing scroll event listener
+window.removeEventListener('scroll', function() {}); // Remove any existing
+window.addEventListener('scroll', optimizedScrollHandler, { passive: true });
+
+// Initialize performance optimizations
+document.addEventListener('DOMContentLoaded', () => {
+  preloadCriticalResources();
+  optimizeImages();
+  deferNonCriticalJS();
+});
+
+// Service Worker for caching (Progressive Web App features)
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js')
+      .then(registration => {
+        console.log('ServiceWorker registered successfully');
+      })
+      .catch(error => {
+        console.log('ServiceWorker registration failed');
+      });
+  });
+}
+
+// =============================================
 // HAMBURGER MENU
 // =============================================
 function initHamburgerMenu() {
@@ -242,6 +369,306 @@ window.addEventListener("error", (e) => {
 });
 
 // =============================================
+// CONTACT FORM
+// =============================================
+function initContactForm() {
+  const contactForm = document.getElementById('contactForm');
+  if (!contactForm) return;
+
+  contactForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    // Get form data
+    const formData = new FormData(contactForm);
+    const data = Object.fromEntries(formData);
+    
+    // Basic validation
+    if (!data.firstName || !data.lastName || !data.email || !data.message) {
+      showNotification('Please fill in all required fields.', 'error');
+      return;
+    }
+    
+    // Email validation
+    if (!isValidEmail(data.email)) {
+      showNotification('Please enter a valid email address.', 'error');
+      return;
+    }
+    
+    // Simulate form submission
+    const submitButton = contactForm.querySelector('button[type="submit"]');
+    const originalText = submitButton.innerHTML;
+    
+    submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+    submitButton.disabled = true;
+    
+    // Simulate API call
+    setTimeout(() => {
+      showNotification('Thank you! Your message has been sent successfully.', 'success');
+      contactForm.reset();
+      submitButton.innerHTML = originalText;
+      submitButton.disabled = false;
+    }, 2000);
+  });
+}
+
+// =============================================
+// NEWSLETTER FORM
+// =============================================
+function initNewsletterForm() {
+  const newsletterForm = document.getElementById('newsletterForm');
+  if (!newsletterForm) return;
+
+  newsletterForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const email = newsletterForm.querySelector('input[type="email"]').value;
+    const privacy = newsletterForm.querySelector('input[type="checkbox"]').checked;
+    
+    if (!email) {
+      showNotification('Please enter your email address.', 'error');
+      return;
+    }
+    
+    if (!isValidEmail(email)) {
+      showNotification('Please enter a valid email address.', 'error');
+      return;
+    }
+    
+    if (!privacy) {
+      showNotification('Please agree to the privacy policy.', 'error');
+      return;
+    }
+    
+    // Simulate subscription
+    const submitButton = newsletterForm.querySelector('button[type="submit"]');
+    const originalText = submitButton.innerHTML;
+    
+    submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+    submitButton.disabled = true;
+    
+    setTimeout(() => {
+      showNotification('Successfully subscribed to our newsletter!', 'success');
+      newsletterForm.reset();
+      submitButton.innerHTML = originalText;
+      submitButton.disabled = false;
+    }, 1500);
+  });
+}
+
+// =============================================
+// COOKIE CONSENT
+// =============================================
+function initCookieConsent() {
+  const cookieConsent = document.getElementById('cookieConsent');
+  const acceptButton = document.getElementById('acceptCookies');
+  const customizeButton = document.getElementById('customizeCookies');
+  
+  if (!cookieConsent) return;
+  
+  // Check if user has already consented
+  if (!localStorage.getItem('cookieConsent')) {
+    setTimeout(() => {
+      cookieConsent.classList.add('show');
+    }, 2000);
+  }
+  
+  acceptButton?.addEventListener('click', function() {
+    localStorage.setItem('cookieConsent', 'accepted');
+    cookieConsent.classList.remove('show');
+    showNotification('Cookie preferences saved.', 'success');
+  });
+  
+  customizeButton?.addEventListener('click', function() {
+    // In a real implementation, this would open a cookie preferences modal
+    showNotification('Cookie customization feature coming soon.', 'info');
+  });
+}
+
+// =============================================
+// BACK TO TOP BUTTON
+// =============================================
+function initBackToTop() {
+  const backToTopButton = document.getElementById('backToTop');
+  if (!backToTopButton) return;
+  
+  window.addEventListener('scroll', function() {
+    if (window.pageYOffset > 300) {
+      backToTopButton.classList.add('show');
+    } else {
+      backToTopButton.classList.remove('show');
+    }
+  });
+  
+  backToTopButton.addEventListener('click', function() {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
+}
+
+// =============================================
+// DROPDOWN MENUS
+// =============================================
+function initDropdownMenus() {
+  const dropdowns = document.querySelectorAll('.nav-dropdown');
+  
+  dropdowns.forEach(dropdown => {
+    const toggle = dropdown.querySelector('.dropdown-toggle');
+    const menu = dropdown.querySelector('.dropdown-menu');
+    
+    if (!toggle || !menu) return;
+    
+    // Mobile dropdown toggle
+    toggle.addEventListener('click', function(e) {
+      if (window.innerWidth <= 768) {
+        e.preventDefault();
+        menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+      }
+    });
+  });
+}
+
+// =============================================
+// NOTIFICATION SYSTEM
+// =============================================
+function showNotification(message, type = 'info') {
+  // Remove existing notifications
+  const existingNotifications = document.querySelectorAll('.notification');
+  existingNotifications.forEach(notification => notification.remove());
+  
+  // Create notification element
+  const notification = document.createElement('div');
+  notification.className = `notification notification-${type}`;
+  notification.innerHTML = `
+    <div class="notification-content">
+      <i class="fas ${getNotificationIcon(type)}"></i>
+      <span>${message}</span>
+      <button class="notification-close">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+  `;
+  
+  // Add styles
+  notification.style.cssText = `
+    position: fixed;
+    top: 100px;
+    right: 20px;
+    background: ${getNotificationColor(type)};
+    color: white;
+    padding: 15px 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    z-index: 10001;
+    transform: translateX(400px);
+    transition: transform 0.3s ease;
+    max-width: 400px;
+  `;
+  
+  // Add to DOM
+  document.body.appendChild(notification);
+  
+  // Animate in
+  setTimeout(() => {
+    notification.style.transform = 'translateX(0)';
+  }, 100);
+  
+  // Close button functionality
+  const closeButton = notification.querySelector('.notification-close');
+  closeButton.addEventListener('click', () => {
+    notification.style.transform = 'translateX(400px)';
+    setTimeout(() => notification.remove(), 300);
+  });
+  
+  // Auto remove after 5 seconds
+  setTimeout(() => {
+    if (notification.parentNode) {
+      notification.style.transform = 'translateX(400px)';
+      setTimeout(() => notification.remove(), 300);
+    }
+  }, 5000);
+}
+
+function getNotificationIcon(type) {
+  const icons = {
+    success: 'fa-check-circle',
+    error: 'fa-exclamation-circle',
+    warning: 'fa-exclamation-triangle',
+    info: 'fa-info-circle'
+  };
+  return icons[type] || icons.info;
+}
+
+function getNotificationColor(type) {
+  const colors = {
+    success: '#00b894',
+    error: '#e74c3c',
+    warning: '#f39c12',
+    info: '#6c5ce7'
+  };
+  return colors[type] || colors.info;
+}
+
+// =============================================
+// EMAIL VALIDATION
+// =============================================
+function isValidEmail(email) {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email);
+}
+
+// =============================================
+// ENHANCED ANALYTICS TRACKING
+// =============================================
+function trackEvent(eventName, eventData = {}) {
+  // Google Analytics 4 event tracking
+  if (typeof gtag !== 'undefined') {
+    gtag('event', eventName, eventData);
+  }
+  
+  // Console log for development
+  console.log('Event tracked:', eventName, eventData);
+}
+
+// Track form submissions
+document.addEventListener('submit', function(e) {
+  const form = e.target;
+  if (form.id === 'contactForm') {
+    trackEvent('form_submit', {
+      form_name: 'contact_form',
+      service_interest: form.service?.value || 'not_specified'
+    });
+  } else if (form.id === 'newsletterForm') {
+    trackEvent('newsletter_signup', {
+      source: 'website'
+    });
+  }
+});
+
+// Track button clicks
+document.addEventListener('click', function(e) {
+  const button = e.target.closest('a, button');
+  if (!button) return;
+  
+  // Track CTA button clicks
+  if (button.classList.contains('btn-primary') || button.classList.contains('btn-secondary')) {
+    trackEvent('cta_click', {
+      button_text: button.textContent.trim(),
+      button_location: button.closest('section')?.id || 'unknown'
+    });
+  }
+  
+  // Track navigation clicks
+  if (button.classList.contains('nav-link')) {
+    trackEvent('navigation_click', {
+      link_text: button.textContent.trim(),
+      destination: button.getAttribute('href')
+    });
+  }
+});
+
+// =============================================
 // CONSOLE WELCOME MESSAGE
 // =============================================
 console.log(
@@ -257,7 +684,7 @@ console.log(
   "font-size: 12px; color: #00b894;"
 );
 console.log("");
-console.log("Interested in joining our team? Email: petes-tech@proton.me");
+console.log("Interested in joining our team? Email: careers@petestechnologies.com");
 
 // =============================================
 // SERVICE WORKER REGISTRATION (Optional - PWA)

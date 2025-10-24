@@ -5,12 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Petes Technologies - Building Africa's Future Through Smart Technology. Innovate, Empower, Localize."
+      content="Petes Technologies - Leading African technology company specializing in fintech, agritech, and digital transformation solutions. Building Africa's future through innovative, locally-relevant technology."
     />
     <meta
       name="keywords"
-      content="African technology, fintech, agritech, Beta Life, AgroBloc, digital transformation Africa"
+      content="African technology, fintech, agritech, Beta Life, AgroBloc, digital transformation Africa, corporate technology solutions, African startups, blockchain agriculture, financial management software"
     />
+    <meta name="author" content="Petes Technologies" />
+    <meta property="og:title" content="Petes Technologies - Building Africa's Future" />
+    <meta property="og:description" content="Leading African technology company specializing in fintech, agritech, and digital transformation solutions." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://petestechnologies.com" />
+    <meta property="og:image" content="https://petestechnologies.com/assets/images/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Petes Technologies - Building Africa's Future" />
+    <meta name="twitter:description" content="Leading African technology company specializing in fintech, agritech, and digital transformation solutions." />
+    <link rel="canonical" href="https://petestechnologies.com" />
     <title>Petes Technologies - Building Africa's Future</title>
 
     <!-- Google Fonts -->
@@ -36,43 +46,155 @@
 
     <!-- Stylesheets -->
     <link rel="stylesheet" href="css/styles.css" />
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="Petes Tech" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="msapplication-TileColor" content="#00b894" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Petes Technologies",
+      "alternateName": "Petes Tech",
+      "url": "https://petestechnologies.com",
+      "logo": "https://petestechnologies.com/assets/images/logo.png",
+      "description": "Leading African technology company specializing in fintech, agritech, and digital transformation solutions.",
+      "foundingDate": "2023",
+      "founders": [
+        {
+          "@type": "Person",
+          "name": "Peter Ejeh",
+          "jobTitle": "Founder & CEO"
+        }
+      ],
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "123 Technology Drive",
+        "addressLocality": "Victoria Island",
+        "addressRegion": "Lagos",
+        "addressCountry": "Nigeria"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+234-123-456-7890",
+        "contactType": "customer service",
+        "email": "hello@petestechnologies.com"
+      },
+      "sameAs": [
+        "https://linkedin.com/company/petes-technologies",
+        "https://twitter.com/petestechnologies",
+        "https://github.com/petes-technologies"
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Technology Services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Custom Software Development",
+              "description": "Bespoke software solutions designed for African markets"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Digital Transformation Consulting",
+              "description": "Strategic consulting to help businesses leverage technology"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "SoftwareApplication",
+              "name": "Beta Life",
+              "description": "Smart personal and SME financial management app",
+              "applicationCategory": "FinanceApplication",
+              "operatingSystem": "iOS, Android"
+            }
+          }
+        ]
+      }
+    }
+    </script>
+    
+    <!-- Additional SEO -->
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    <meta name="googlebot" content="index, follow" />
+    <meta name="google-site-verification" content="your-google-verification-code" />
+    <link rel="alternate" hreflang="en" href="https://petestechnologies.com" />
+    <link rel="alternate" hreflang="en-ng" href="https://petestechnologies.com" />
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
   </head>
   <body>
+    <!-- Skip to main content for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
     <!-- Loading Screen -->
-    <div class="loading-screen" id="loadingScreen">
+    <div class="loading-screen" id="loadingScreen" aria-hidden="true">
       <div class="loader">
-        <div class="loader-ring"></div>
+        <div class="loader-ring" role="progressbar" aria-label="Loading"></div>
         <div class="loader-text">PETES <span>TECH</span></div>
       </div>
     </div>
 
     <!-- Navigation Header -->
-    <header class="header">
-      <div class="logo">PETES <span>TECH</span></div>
-      <nav class="navbar">
-        <div class="hamburger" id="hamburger">
+    <header class="header" role="banner">
+      <div class="logo" aria-label="Petes Technologies Home">PETES <span>TECH</span></div>
+      <nav class="navbar" role="navigation" aria-label="Main navigation">
+        <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
           <span class="bar"></span>
           <span class="bar"></span>
           <span class="bar"></span>
-        </div>
+        </button>
         <ul class="nav-menu" id="nav-menu">
           <li><a href="#home" class="nav-link">Home</a></li>
-          <li><a href="#vision" class="nav-link">Vision & Mission</a></li>
-          <li><a href="#values" class="nav-link">Core Values</a></li>
-          <li><a href="#opportunity" class="nav-link">Opportunity</a></li>
-          <li><a href="#products" class="nav-link">Products</a></li>
-          <li><a href="#features" class="nav-link">Features</a></li>
-          <li><a href="#different" class="nav-link">Why Different</a></li>
-          <li><a href="#tech" class="nav-link">Technology</a></li>
-          <li><a href="#roadmap" class="nav-link">Roadmap</a></li>
-          <li><a href="#leadership" class="nav-link">Leadership</a></li>
+          <li class="nav-dropdown">
+            <a href="#about" class="nav-link dropdown-toggle">About <i class="fas fa-chevron-down"></i></a>
+            <ul class="dropdown-menu">
+              <li><a href="#vision" class="nav-link">Vision & Mission</a></li>
+              <li><a href="#values" class="nav-link">Core Values</a></li>
+              <li><a href="#leadership" class="nav-link">Leadership</a></li>
+              <li><a href="#company-story" class="nav-link">Our Story</a></li>
+              <li><a href="#careers" class="nav-link">Careers</a></li>
+            </ul>
+          </li>
+          <li class="nav-dropdown">
+            <a href="#services" class="nav-link dropdown-toggle">Services <i class="fas fa-chevron-down"></i></a>
+            <ul class="dropdown-menu">
+              <li><a href="#products" class="nav-link">Products</a></li>
+              <li><a href="#consulting" class="nav-link">Consulting</a></li>
+              <li><a href="#development" class="nav-link">Development</a></li>
+              <li><a href="#support" class="nav-link">Support</a></li>
+            </ul>
+          </li>
+          <li><a href="#solutions" class="nav-link">Solutions</a></li>
+          <li class="nav-dropdown">
+            <a href="#resources" class="nav-link dropdown-toggle">Resources <i class="fas fa-chevron-down"></i></a>
+            <ul class="dropdown-menu">
+              <li><a href="#case-studies" class="nav-link">Case Studies</a></li>
+              <li><a href="#blog" class="nav-link">Blog</a></li>
+              <li><a href="#whitepapers" class="nav-link">Whitepapers</a></li>
+              <li><a href="#documentation" class="nav-link">Documentation</a></li>
+            </ul>
+          </li>
           <li><a href="#contact" class="nav-link">Contact</a></li>
+          <li><a href="#demo" class="nav-link btn-demo">Request Demo</a></li>
         </ul>
       </nav>
     </header>
 
     <!-- Main Container -->
-    <div class="container">
+    <main class="container" id="main-content" role="main">
       <!-- Home -->
       <section id="home" class="slide bg-gradient" data-slide="1">
         <div class="grid-bg"></div>
@@ -604,35 +726,650 @@
         </div>
       </section>
 
-      <!-- Final Call to Action -->
-      <section id="contact" class="slide bg-green" data-slide="12">
+      <!-- Company Story -->
+      <section id="company-story" class="slide bg-white" data-slide="12">
+        <div class="slide-content">
+          <div class="section-num">11</div>
+          <h2>Our Story</h2>
+          <p class="section-subtitle">
+            From vision to reality - building Africa's technology future
+          </p>
+          <div class="story-timeline">
+            <div class="story-item">
+              <div class="story-year">2023</div>
+              <div class="story-content">
+                <h4>The Beginning</h4>
+                <p>Founded with a vision to create technology solutions specifically designed for African markets, addressing real challenges with innovative approaches.</p>
+              </div>
+            </div>
+            <div class="story-item">
+              <div class="story-year">2024</div>
+              <div class="story-content">
+                <h4>First Product Development</h4>
+                <p>Launched Beta Life development, focusing on offline-first financial management for African users with limited internet connectivity.</p>
+              </div>
+            </div>
+            <div class="story-item">
+              <div class="story-year">2025</div>
+              <div class="story-content">
+                <h4>Market Entry</h4>
+                <p>Beta Life goes live, serving thousands of users across Nigeria with AI-powered financial insights and multi-currency support.</p>
+              </div>
+            </div>
+            <div class="story-item">
+              <div class="story-year">Future</div>
+              <div class="story-content">
+                <h4>Continental Expansion</h4>
+                <p>Scaling across Africa with AgroBloc and expanding our ecosystem of locally-relevant technology solutions.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Services Overview -->
+      <section id="consulting" class="slide bg-dark" data-slide="13">
+        <div class="grid-bg"></div>
+        <div class="slide-content">
+          <div class="section-num">12</div>
+          <h2>Our Services</h2>
+          <p class="section-subtitle">
+            Comprehensive technology solutions for African businesses
+          </p>
+          <div class="services-grid">
+            <div class="service-card">
+              <div class="service-icon">
+                <i class="fas fa-code"></i>
+              </div>
+              <h3>Custom Development</h3>
+              <p>Bespoke software solutions designed for African markets, from mobile apps to enterprise systems.</p>
+              <ul class="service-features">
+                <li>Mobile-first design</li>
+                <li>Offline-capable applications</li>
+                <li>Multi-currency support</li>
+                <li>Local payment integration</li>
+              </ul>
+              <a href="#contact" class="service-cta">Learn More</a>
+            </div>
+            <div class="service-card">
+              <div class="service-icon">
+                <i class="fas fa-chart-line"></i>
+              </div>
+              <h3>Digital Transformation</h3>
+              <p>Strategic consulting to help businesses leverage technology for growth and efficiency.</p>
+              <ul class="service-features">
+                <li>Process automation</li>
+                <li>Digital strategy</li>
+                <li>Technology audits</li>
+                <li>Change management</li>
+              </ul>
+              <a href=\"#contact\" class=\"service-cta\">Learn More</a>
+            </div>
+            <div class="service-card">
+              <div class="service-icon">
+                <i class="fas fa-shield-alt"></i>
+              </div>
+              <h3>Security & Compliance</h3>
+              <p>Robust security solutions ensuring data protection and regulatory compliance.</p>
+              <ul class="service-features">
+                <li>NDPR compliance</li>
+                <li>Security audits</li>
+                <li>Data encryption</li>
+                <li>Risk assessment</li>
+              </ul>
+              <a href="#contact" class="service-cta">Learn More</a>
+            </div>
+            <div class="service-card">
+              <div class="service-icon">
+                <i class="fas fa-headset"></i>
+              </div>
+              <h3>Support & Maintenance</h3>
+              <p>Ongoing support to ensure your technology solutions continue to deliver value.</p>
+              <ul class="service-features">
+                <li>24/7 monitoring</li>
+                <li>Regular updates</li>
+                <li>Performance optimization</li>
+                <li>User training</li>
+              </ul>
+              <a href="#contact" class="service-cta">Learn More</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Case Studies -->
+      <section id="case-studies" class="slide bg-white" data-slide="14">
+        <div class="slide-content">
+          <div class="section-num">13</div>
+          <h2>Success Stories</h2>
+          <p class="section-subtitle">
+            Real impact through innovative technology solutions
+          </p>
+          <div class="case-studies-grid">
+            <div class="case-study">
+              <div class="case-study-header">
+                <div class="case-study-logo">
+                  <i class="fas fa-university"></i>
+                </div>
+                <div class="case-study-meta">
+                  <h4>Nigerian University</h4>
+                  <span class="case-study-category">Education Technology</span>
+                </div>
+              </div>
+              <h3>Digital Campus Transformation</h3>
+              <p>Implemented comprehensive digital infrastructure for a leading Nigerian university, improving student services and administrative efficiency.</p>
+              <div class="case-study-metrics">
+                <div class="metric">
+                  <span class="metric-value">85%</span>
+                  <span class="metric-label">Efficiency Increase</span>
+                </div>
+                <div class="metric">
+                  <span class="metric-value">50K+</span>
+                  <span class="metric-label">Students Served</span>
+                </div>
+              </div>
+              <a href="#contact" class="case-study-link">Read Full Case Study</a>
+            </div>
+            <div class="case-study">
+              <div class="case-study-header">
+                <div class="case-study-logo">
+                  <i class="fas fa-store"></i>
+                </div>
+                <div class="case-study-meta">
+                  <h4>Retail Chain</h4>
+                  <span class="case-study-category">Retail Technology</span>
+                </div>
+              </div>
+              <h3>Multi-Store Management System</h3>
+              <p>Developed integrated POS and inventory management system for growing retail chain across West Africa.</p>
+              <div class="case-study-metrics">
+                <div class="metric">
+                  <span class="metric-value">40%</span>
+                  <span class="metric-label">Cost Reduction</span>
+                </div>
+                <div class="metric">
+                  <span class="metric-value">200+</span>
+                  <span class="metric-label">Stores Connected</span>
+                </div>
+              </div>
+              <a href="#contact" class="case-study-link">Read Full Case Study</a>
+            </div>
+            <div class="case-study">
+              <div class="case-study-header">
+                <div class="case-study-logo">
+                  <i class="fas fa-seedling"></i>
+                </div>
+                <div class="case-study-meta">
+                  <h4>Agricultural Cooperative</h4>
+                  <span class="case-study-category">AgriTech</span>
+                </div>
+              </div>
+              <h3>Smart Farming Platform</h3>
+              <p>Created digital platform connecting farmers with buyers, improving transparency and reducing post-harvest losses.</p>
+              <div class="case-study-metrics">
+                <div class="metric">
+                  <span class="metric-value">30%</span>
+                  <span class="metric-label">Loss Reduction</span>
+                </div>
+                <div class="metric">
+                  <span class="metric-value">5K+</span>
+                  <span class="metric-label">Farmers Connected</span>
+                </div>
+              </div>
+              <a href="#contact" class="case-study-link">Read Full Case Study</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Careers -->
+      <section id="careers" class="slide bg-purple" data-slide="15">
+        <div class="grid-bg"></div>
+        <div class="slide-content">
+          <div class="section-num">14</div>
+          <h2>Join Our Team</h2>
+          <p class="section-subtitle">
+            Build the future of African technology with us
+          </p>
+          <div class="careers-content">
+            <div class="careers-intro">
+              <h3>Why Work at Petes Technologies?</h3>
+              <div class="benefits-grid">
+                <div class="benefit">
+                  <i class="fas fa-rocket"></i>
+                  <h4>Innovation First</h4>
+                  <p>Work on cutting-edge projects that shape Africa's digital future</p>
+                </div>
+                <div class="benefit">
+                  <i class="fas fa-users"></i>
+                  <h4>Collaborative Culture</h4>
+                  <p>Join a diverse team of passionate technologists and innovators</p>
+                </div>
+                <div class="benefit">
+                  <i class="fas fa-chart-line"></i>
+                  <h4>Growth Opportunities</h4>
+                  <p>Continuous learning and career development in a fast-growing company</p>
+                </div>
+                <div class="benefit">
+                  <i class="fas fa-globe-africa"></i>
+                  <h4>Impact at Scale</h4>
+                  <p>Build solutions that impact millions across the African continent</p>
+                </div>
+              </div>
+            </div>
+            <div class="open-positions">
+              <h3>Open Positions</h3>
+              <div class="position-list">
+                <div class="position">
+                  <div class="position-info">
+                    <h4>Senior Full-Stack Developer</h4>
+                    <div class="position-meta">
+                      <span class="location">Lagos, Nigeria</span>
+                      <span class="type">Full-time</span>
+                    </div>
+                  </div>
+                  <a href="mailto:careers@petestechnologies.com?subject=Senior Full-Stack Developer Application" class="apply-btn">Apply</a>
+                </div>
+                <div class="position">
+                  <div class="position-info">
+                    <h4>Product Manager</h4>
+                    <div class="position-meta">
+                      <span class="location">Remote</span>
+                      <span class="type">Full-time</span>
+                    </div>
+                  </div>
+                  <a href="mailto:careers@petestechnologies.com?subject=Product Manager Application" class="apply-btn">Apply</a>
+                </div>
+                <div class="position">
+                  <div class="position-info">
+                    <h4>UI/UX Designer</h4>
+                    <div class="position-meta">
+                      <span class="location">Lagos, Nigeria</span>
+                      <span class="type">Contract</span>
+                    </div>
+                  </div>
+                  <a href="mailto:careers@petestechnologies.com?subject=UI/UX Designer Application" class="apply-btn">Apply</a>
+                </div>
+                <div class="position">
+                  <div class="position-info">
+                    <h4>DevOps Engineer</h4>
+                    <div class="position-meta">
+                      <span class="location">Remote</span>
+                      <span class="type">Full-time</span>
+                    </div>
+                  </div>
+                  <a href="mailto:careers@petestechnologies.com?subject=DevOps Engineer Application" class="apply-btn">Apply</a>
+                </div>
+              </div>
+              <div class="careers-cta">
+                <p>Don't see a position that fits? We're always looking for talented individuals.</p>
+                <a href="mailto:careers@petestechnologies.com?subject=General Application" class="btn btn-primary">Send Us Your Resume</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Blog/Resources -->
+      <section id="blog" class="slide bg-white" data-slide="16">
+        <div class="slide-content">
+          <div class="section-num">15</div>
+          <h2>Latest Insights</h2>
+          <p class="section-subtitle">
+            Thought leadership and industry insights from our team
+          </p>
+          <div class="blog-grid">
+            <article class="blog-post featured">
+              <div class="post-image">
+                <div class="post-category">Featured</div>
+                <i class="fas fa-mobile-alt post-icon"></i>
+              </div>
+              <div class="post-content">
+                <h3>The Future of Mobile Banking in Africa</h3>
+                <p>Exploring how mobile-first financial services are transforming the African banking landscape and creating new opportunities for financial inclusion.</p>
+                <div class="post-meta">
+                  <span class="post-author">Peter Ejeh</span>
+                  <span class="post-date">March 15, 2025</span>
+                  <span class="post-read-time">8 min read</span>
+                </div>
+                <a href="#" class="read-more">Read Article</a>
+              </div>
+            </article>
+            <article class="blog-post">
+              <div class="post-image">
+                <i class="fas fa-brain post-icon"></i>
+              </div>
+              <div class="post-content">
+                <h4>AI for African Markets</h4>
+                <p>How artificial intelligence can be tailored to solve uniquely African challenges...</p>
+                <div class="post-meta">
+                  <span class="post-date">March 10, 2025</span>
+                  <span class="post-read-time">5 min read</span>
+                </div>
+                <a href="#" class="read-more">Read More</a>
+              </div>
+            </article>
+            <article class="blog-post">
+              <div class="post-image">
+                <i class="fas fa-leaf post-icon"></i>
+              </div>
+              <div class="post-content">
+                <h4>Blockchain in Agriculture</h4>
+                <p>Transforming agricultural supply chains with transparent, decentralized technology...</p>
+                <div class="post-meta">
+                  <span class="post-date">March 5, 2025</span>
+                  <span class="post-read-time">6 min read</span>
+                </div>
+                <a href="#" class="read-more">Read More</a>
+              </div>
+            </article>
+            <article class="blog-post">
+              <div class="post-image">
+                <i class="fas fa-shield-alt post-icon"></i>
+              </div>
+              <div class="post-content">
+                <h4>Data Privacy in Africa</h4>
+                <p>Navigating NDPR and building trust through transparent data practices...</p>
+                <div class="post-meta">
+                  <span class="post-date">February 28, 2025</span>
+                  <span class="post-read-time">7 min read</span>
+                </div>
+                <a href="#" class="read-more">Read More</a>
+              </div>
+            </article>
+          </div>
+          <div class="blog-cta">
+            <a href="#newsletter" class="btn btn-secondary">Subscribe to Our Newsletter</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Newsletter Signup -->
+      <section id="newsletter" class="slide bg-green" data-slide="17">
+        <div class="grid-bg"></div>
+        <div class="slide-content">
+          <div class="newsletter-content">
+            <div class="newsletter-text">
+              <h2>Stay Updated</h2>
+              <p>Get the latest insights on African technology, product updates, and industry trends delivered to your inbox.</p>
+            </div>
+            <form class="newsletter-form" id="newsletterForm">
+              <div class="form-group">
+                <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+                <button type="submit" class="btn btn-primary">
+                  <span class="btn-text">Subscribe</span>
+                  <i class="fas fa-paper-plane btn-icon"></i>
+                </button>
+              </div>
+              <div class="form-privacy">
+                <label class="checkbox-label">
+                  <input type="checkbox" required>
+                  <span class="checkmark"></span>
+                  I agree to receive marketing communications and have read the <a href="privacy-policy.html">Privacy Policy</a>
+                </label>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact Section -->
+      <section id="contact" class="slide bg-dark" data-slide="18">
+        <div class="grid-bg"></div>
+        <div class="slide-content">
+          <div class="section-num">16</div>
+          <h2>Get in Touch</h2>
+          <p class="section-subtitle">
+            Ready to transform your business with technology? Let's talk.
+          </p>
+          <div class="contact-content">
+            <div class="contact-form-section">
+              <form class="contact-form" id="contactForm">
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="firstName">First Name *</label>
+                    <input type="text" id="firstName" name="firstName" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="lastName">Last Name *</label>
+                    <input type="text" id="lastName" name="lastName" required>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="contactEmail" name="email" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="company">Company</label>
+                  <input type="text" id="company" name="company">
+                </div>
+                <div class="form-group">
+                  <label for="service">Service Interest</label>
+                  <select id="service" name="service">
+                    <option value="">Select a service</option>
+                    <option value="custom-development">Custom Development</option>
+                    <option value="digital-transformation">Digital Transformation</option>
+                    <option value="consulting">Consulting</option>
+                    <option value="beta-life">Beta Life Product</option>
+                    <option value="agrobloc">AgroBloc Platform</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="message">Message *</label>
+                  <textarea id="message" name="message" rows="5" placeholder="Tell us about your project or how we can help..." required></textarea>
+                </div>
+                <div class="form-group">
+                  <label class="checkbox-label">
+                    <input type="checkbox" name="privacy" required>
+                    <span class="checkmark"></span>
+                    I agree to the <a href="privacy-policy.html">Privacy Policy</a> and <a href="terms-of-service.html">Terms of Service</a>
+                  </label>
+                </div>
+                <button type="submit" class="btn btn-primary btn-large">
+                  <span class="btn-text">Send Message</span>
+                  <i class="fas fa-arrow-right btn-icon"></i>
+                </button>
+              </form>
+            </div>
+            <div class="contact-info-section">
+              <div class="contact-info">
+                <h3>Contact Information</h3>
+                <div class="contact-details">
+                  <div class="contact-item">
+                    <div class="contact-icon">
+                      <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="contact-text">
+                      <h4>Email</h4>
+                      <p>hello@petestechnologies.com</p>
+                      <p>careers@petestechnologies.com</p>
+                    </div>
+                  </div>
+                  <div class="contact-item">
+                    <div class="contact-icon">
+                      <i class="fas fa-phone"></i>
+                    </div>
+                    <div class="contact-text">
+                      <h4>Phone</h4>
+                      <p>+234 (0) 123 456 7890</p>
+                      <p>+1 (555) 123-4567</p>
+                    </div>
+                  </div>
+                  <div class="contact-item">
+                    <div class="contact-icon">
+                      <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="contact-text">
+                      <h4>Office</h4>
+                      <p>123 Technology Drive<br>Victoria Island, Lagos<br>Nigeria</p>
+                    </div>
+                  </div>
+                  <div class="contact-item">
+                    <div class="contact-icon">
+                      <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="contact-text">
+                      <h4>Business Hours</h4>
+                      <p>Monday - Friday: 9:00 AM - 6:00 PM WAT<br>Saturday: 10:00 AM - 2:00 PM WAT</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="social-links">
+                  <h4>Follow Us</h4>
+                  <div class="social-icons">
+                    <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-medium"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Final CTA -->
+      <section id="demo" class="slide bg-gradient" data-slide="19">
         <div class="grid-bg"></div>
         <div class="slide-content">
           <div class="hero cta-hero">
             <div class="cta-icon">
               <i class="fas fa-rocket launch-icon"></i>
             </div>
-            <h1 class="cta-title">Building Africa's Future</h1>
-            <p class="cta-subtitle">One Smart Solution at a Time</p>
+            <h1 class="cta-title">Ready to Get Started?</h1>
+            <p class="cta-subtitle">Transform Your Business with African-First Technology</p>
             <p class="cta-description">
-              Join us in transforming how Africans interact with technology
+              Join leading organizations across Africa who trust Petes Technologies to drive their digital transformation
             </p>
-            <div class="cta-badges">
-              <span class="cta-badge">Investors</span>
-              <span class="cta-badge">Partners</span>
-              <span class="cta-badge">Talent</span>
-              <span class="cta-badge">Users</span>
+            <div class="cta-stats">
+              <div class="cta-stat">
+                <span class="stat-number">500+</span>
+                <span class="stat-label">Projects Delivered</span>
+              </div>
+              <div class="cta-stat">
+                <span class="stat-number">50+</span>
+                <span class="stat-label">Happy Clients</span>
+              </div>
+              <div class="cta-stat">
+                <span class="stat-number">15+</span>
+                <span class="stat-label">Countries Served</span>
+              </div>
             </div>
             <div class="cta-actions">
-              <a href="mailto:petes-tech@proton.me" class="btn btn-primary"
-                >Get in Touch</a
-              >
-              <a href="#" class="btn btn-secondary">Download Pitch Deck</a>
+              <a href="#contact" class="btn btn-primary btn-large">
+                <span class="btn-text">Start Your Project</span>
+                <i class="fas fa-arrow-right btn-icon"></i>
+              </a>
+              <a href="mailto:hello@petestechnologies.com?subject=Demo Request" class="btn btn-secondary btn-large">
+                <span class="btn-text">Request Demo</span>
+                <i class="fas fa-play btn-icon"></i>
+              </a>
             </div>
-            <p class="cta-tagline">Technology for a Smarter Africa.</p>
+            <p class="cta-tagline">Building Africa's Future, One Solution at a Time.</p>
           </div>
         </div>
       </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-main">
+          <div class="footer-section">
+            <div class="footer-logo">
+              <div class="logo">PETES <span>TECH</span></div>
+              <p>Building Africa's future through smart, locally relevant, and globally competitive technology solutions.</p>
+              <div class="footer-social">
+                <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-medium"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="footer-section">
+            <h4>Company</h4>
+            <ul class="footer-links">
+              <li><a href="#vision">About Us</a></li>
+              <li><a href="#leadership">Leadership</a></li>
+              <li><a href="#careers">Careers</a></li>
+              <li><a href="#blog">Blog</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h4>Services</h4>
+            <ul class="footer-links">
+              <li><a href="#consulting">Custom Development</a></li>
+              <li><a href="#consulting">Digital Transformation</a></li>
+              <li><a href="#consulting">Consulting</a></li>
+              <li><a href="#consulting">Support & Maintenance</a></li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h4>Products</h4>
+            <ul class="footer-links">
+              <li><a href="#products">Beta Life</a></li>
+              <li><a href="#products">AgroBloc</a></li>
+              <li><a href="#case-studies">Case Studies</a></li>
+              <li><a href="#documentation">Documentation</a></li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h4>Resources</h4>
+            <ul class="footer-links">
+              <li><a href="#blog">Blog</a></li>
+              <li><a href="#whitepapers">Whitepapers</a></li>
+              <li><a href="#case-studies">Case Studies</a></li>
+              <li><a href="#documentation">API Docs</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <div class="footer-legal">
+            <p>&copy; 2025 Petes Technologies. All rights reserved.</p>
+            <div class="legal-links">
+              <a href="privacy-policy.html">Privacy Policy</a>
+              <a href="terms-of-service.html">Terms of Service</a>
+              <a href="privacy-policy.html#cookies">Cookie Policy</a>
+              <a href="privacy-policy.html#security">Security</a>
+            </div>
+          </div>
+          <div class="footer-contact">
+            <p>hello@petestechnologies.com | +234 (0) 123 456 7890</p>
+            <p>Lagos, Nigeria | Building Africa's Future</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Cookie Consent Banner -->
+    <div id="cookieConsent" class="cookie-consent">
+      <div class="cookie-content">
+        <div class="cookie-text">
+          <h4>We use cookies</h4>
+          <p>We use cookies to enhance your browsing experience and analyze our traffic. By clicking "Accept All", you consent to our use of cookies.</p>
+        </div>
+        <div class="cookie-actions">
+          <button id="acceptCookies" class="btn btn-primary btn-small">Accept All</button>
+          <button id="customizeCookies" class="btn btn-secondary btn-small">Customize</button>
+          <a href="privacy-policy.html" class="cookie-link">Privacy Policy</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="back-to-top" title="Back to top">
+      <i class="fas fa-chevron-up"></i>
+    </button>
     </div>
 
     <!-- JavaScript -->
