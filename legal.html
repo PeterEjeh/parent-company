@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legal Information - Petes Technologies</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .legal-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 120px 20px 60px;
+            background: var(--color-white);
+            color: var(--color-dark-medium);
+        }
+        .legal-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .legal-header h1 {
+            color: var(--color-primary);
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        .legal-content {
+            line-height: 1.8;
+        }
+        .legal-content h2 {
+            color: var(--color-primary);
+            font-size: 1.8rem;
+            margin: 40px 0 20px;
+            padding-top: 20px;
+            border-top: 2px solid var(--color-light-gray);
+        }
+        .legal-content h3 {
+            color: var(--color-dark-medium);
+            font-size: 1.4rem;
+            margin: 30px 0 15px;
+        }
+        .legal-content p {
+            margin-bottom: 20px;
+        }
+        .legal-content ul {
+            margin: 20px 0;
+            padding-left: 30px;
+        }
+        .legal-content li {
+            margin-bottom: 10px;
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--color-primary);
+            text-decoration: none;
+            font-weight: 600;
+            margin-bottom: 30px;
+        }
+        .back-link:hover {
+            gap: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="legal-container">
+        <a href="index.html" class="back-link">
+            <i class="fas fa-arrow-left"></i>
+            Back to Home
+        </a>
+        
+        <div class="legal-header">
+            <h1 id="page-title">Legal Information</h1>
+            <p>Last updated: December 15, 2024</p>
+        </div>
+        
+        <div class="legal-content" id="legal-content">
+            <!-- Content will be loaded dynamically -->
+        </div>
+    </div>
+
+    <script>
+        // Legal page content
+        const legalPages = {
+            privacy: {
+                title: "Privacy Policy",
+                content: `
+                    <h2>1. Information We Collect</h2>
+                    <p>We collect information you provide directly to us, such as when you create an account, use our services, or contact us for support.</p>
+                    
+                    <h3>Personal Information</h3>
+                    <ul>
+                        <li>Name and contact information</li>
+                        <li>Email address and phone number</li>
+                        <li>Account credentials</li>
+                        <li>Payment information (processed securely)</li>
+                    </ul>
+                    
+                    <h3>Usage Information</h3>
+                    <ul>
+                        <li>Device information and identifiers</li>
+                        <li>Log data and analytics</li>
+                        <li>Cookies and similar technologies</li>
+                        <li>Location data (with your consent)</li>
+                    </ul>
+                    
+                    <h2>2. How We Use Your Information</h2>
+                    <p>We use the information we collect to:</p>
+                    <ul>
+                        <li>Provide, maintain, and improve our services</li>
+                        <li>Process transactions and send related information</li>
+                        <li>Send technical notices and support messages</li>
+                        <li>Respond to your comments and questions</li>
+                        <li>Develop new products and services</li>
+                        <li>Comply with legal obligations</li>
+                    </ul>
+                    
+                    <h2>3. Information Sharing</h2>
+                    <p>We do not sell, trade, or otherwise transfer your personal information to third parties without your consent, except:</p>
+                    <ul>
+                        <li>With service providers who assist us in operating our services</li>
+                        <li>When required by law or to protect our rights</li>
+                        <li>In connection with a business transfer or acquisition</li>
+                    </ul>
+                    
+                    <h2>4. Data Security</h2>
+                    <p>We implement appropriate security measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction.</p>
+                    
+                    <h2>5. Your Rights</h2>
+                    <p>You have the right to:</p>
+                    <ul>
+                        <li>Access your personal information</li>
+                        <li>Correct inaccurate data</li>
+                        <li>Delete your account and data</li>
+                        <li>Object to processing</li>
+                        <li>Data portability</li>
+                    </ul>
+                    
+                    <h2>6. Contact Us</h2>
+                    <p>If you have questions about this Privacy Policy, please contact us at privacy@petestechnologies.com</p>
+                `
+            },
+            terms: {
+                title: "Terms of Service",
+                content: `
+                    <h2>1. Acceptance of Terms</h2>
+                    <p>By accessing and using Petes Technologies services, you accept and agree to be bound by the terms and provision of this agreement.</p>
+                    
+                    <h2>2. Use License</h2>
+                    <p>Permission is granted to temporarily download one copy of our materials for personal, non-commercial transitory viewing only.</p>
+                    
+                    <h3>Under this license you may not:</h3>
+                    <ul>
+                        <li>Modify or copy the materials</li>
+                        <li>Use the materials for any commercial purpose</li>
+                        <li>Attempt to reverse engineer any software</li>
+                        <li>Remove any copyright or proprietary notations</li>
+                    </ul>
+                    
+                    <h2>3. Service Availability</h2>
+                    <p>We strive to maintain high service availability but do not guarantee uninterrupted access. We may suspend or terminate services for maintenance, updates, or other reasons.</p>
+                    
+                    <h2>4. User Responsibilities</h2>
+                    <p>Users are responsible for:</p>
+                    <ul>
+                        <li>Maintaining the confidentiality of account credentials</li>
+                        <li>All activities under their account</li>
+                        <li>Compliance with applicable laws and regulations</li>
+                        <li>Providing accurate and current information</li>
+                    </ul>
+                    
+                    <h2>5. Prohibited Uses</h2>
+                    <p>You may not use our services:</p>
+                    <ul>
+                        <li>For any unlawful purpose or to solicit others to perform unlawful acts</li>
+                        <li>To violate any international, federal, provincial, or state regulations, rules, laws, or local ordinances</li>
+                        <li>To infringe upon or violate our intellectual property rights or the intellectual property rights of others</li>
+                        <li>To harass, abuse, insult, harm, defame, slander, disparage, intimidate, or discriminate</li>
+                    </ul>
+                    
+                    <h2>6. Limitation of Liability</h2>
+                    <p>In no event shall Petes Technologies, nor its directors, employees, partners, agents, suppliers, or affiliates, be liable for any indirect, incidental, special, consequential, or punitive damages.</p>
+                    
+                    <h2>7. Governing Law</h2>
+                    <p>These terms shall be governed by and construed in accordance with the laws of Nigeria, without regard to its conflict of law provisions.</p>
+                `
+            },
+            cookies: {
+                title: "Cookie Policy",
+                content: `
+                    <h2>1. What Are Cookies</h2>
+                    <p>Cookies are small text files that are placed on your computer or mobile device when you visit our website. They help us provide you with a better experience by remembering your preferences and enabling certain functionality.</p>
+                    
+                    <h2>2. Types of Cookies We Use</h2>
+                    
+                    <h3>Essential Cookies</h3>
+                    <p>These cookies are necessary for the website to function properly. They enable basic functions like page navigation, access to secure areas, and remembering your preferences.</p>
+                    
+                    <h3>Analytics Cookies</h3>
+                    <p>These cookies help us understand how visitors interact with our website by collecting and reporting information anonymously. We use this data to improve our website's performance and user experience.</p>
+                    
+                    <h3>Functional Cookies</h3>
+                    <p>These cookies enable enhanced functionality and personalization, such as remembering your language preference or region.</p>
+                    
+                    <h3>Marketing Cookies</h3>
+                    <p>These cookies are used to track visitors across websites to display relevant and engaging advertisements.</p>
+                    
+                    <h2>3. How We Use Cookies</h2>
+                    <ul>
+                        <li>To remember your preferences and settings</li>
+                        <li>To analyze website traffic and usage patterns</li>
+                        <li>To improve website performance and functionality</li>
+                        <li>To provide personalized content and advertisements</li>
+                        <li>To ensure website security</li>
+                    </ul>
+                    
+                    <h2>4. Managing Cookies</h2>
+                    <p>You can control and manage cookies in various ways:</p>
+                    <ul>
+                        <li>Browser settings: Most browsers allow you to refuse or accept cookies</li>
+                        <li>Cookie consent: Use our cookie consent tool to manage preferences</li>
+                        <li>Opt-out tools: Use industry opt-out tools for advertising cookies</li>
+                    </ul>
+                    
+                    <h2>5. Third-Party Cookies</h2>
+                    <p>We may use third-party services that set their own cookies, including:</p>
+                    <ul>
+                        <li>Google Analytics for website analytics</li>
+                        <li>Social media platforms for sharing functionality</li>
+                        <li>Payment processors for transaction security</li>
+                    </ul>
+                    
+                    <h2>6. Updates to This Policy</h2>
+                    <p>We may update this Cookie Policy from time to time. We will notify you of any changes by posting the new policy on this page and updating the "Last updated" date.</p>
+                `
+            }
+        };
+
+        // Load legal page content
+        function loadLegalPage(page) {
+            const content = legalPages[page];
+            if (content) {
+                document.getElementById('page-title').textContent = content.title;
+                document.getElementById('legal-content').innerHTML = content.content;
+            }
+        }
+
+        // Get page parameter from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const page = urlParams.get('page') || 'privacy';
+        loadLegalPage(page);
+    </script>
+</body>
+</html>
